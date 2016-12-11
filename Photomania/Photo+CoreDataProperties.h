@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.h
 //  Photomania
 //
-//  Created by 刘芳芳 on 16/11/14.
+//  Created by 刘芳芳 on 16/12/11.
 //  Copyright © 2016年 刘芳芳. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,10 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Photo (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *title;
-@property (nullable, nonatomic, retain) NSString *subtitle;
 @property (nullable, nonatomic, retain) NSString *imageURL;
+@property (nullable, nonatomic, retain) NSString *subtitle;
+@property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *unique;
+@property (nullable, nonatomic, retain) NSNumber *latitude;
+@property (nullable, nonatomic, retain) NSNumber *longitude;
+@property (nullable, nonatomic, retain) NSString *thumbnailURL;
 @property (nullable, nonatomic, retain) Photographer *whoTook;
 
 @end

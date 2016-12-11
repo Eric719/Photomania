@@ -10,6 +10,8 @@
 #import "Photographer.h"
 #import "PhotoDatabaseAvailability.h"
 #import "PhotosByPhotographerCDTVC.h"
+#import "PhotosByPhotographerMapViewController.h"
+#import "PhotosByPhotographerImageViewController.h"
 
 @implementation PhotographersCDTVC
 
@@ -54,9 +56,16 @@
 - (void)prepareViewController:(id)vc forSegue:(NSString *)segueIdentifer fromIndexPath:(NSIndexPath *)indexPath
 {
     Photographer *photographer = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSLog(@"--%@",photographer);
     if([vc isKindOfClass:[PhotosByPhotographerCDTVC class]]) {
         PhotosByPhotographerCDTVC *pbpcdtvc = (PhotosByPhotographerCDTVC *)vc;
         pbpcdtvc.photographer = photographer;
+    }else if ([vc isKindOfClass:[PhotosByPhotographerMapViewController class]]){
+        PhotosByPhotographerMapViewController *pbpmapvc = (PhotosByPhotographerMapViewController *)vc;
+        pbpmapvc.photographer = photographer;
+    }else if([vc isKindOfClass:[PhotosByPhotographerImageViewController class]]){
+        PhotosByPhotographerImageViewController *pbpivc = (PhotosByPhotographerImageViewController *)vc;
+        pbpivc.photographer = photographer;
     }
 }
 
@@ -71,7 +80,7 @@
                   fromIndexPath:indexPath];
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     id detailvc = [self.splitViewController.viewControllers lastObject];
     //如果是UINavigationController 就去找它的根视图控制器

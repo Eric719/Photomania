@@ -2,7 +2,7 @@
 //  Photo+CoreDataProperties.m
 //  Photomania
 //
-//  Created by 刘芳芳 on 16/11/14.
+//  Created by 刘芳芳 on 16/12/11.
 //  Copyright © 2016年 刘芳芳. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,10 +13,13 @@
 
 @implementation Photo (CoreDataProperties)
 
-@dynamic title;
-@dynamic subtitle;
 @dynamic imageURL;
+@dynamic subtitle;
+@dynamic title;
 @dynamic unique;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic thumbnailURL;
 @dynamic whoTook;
 
 @end
