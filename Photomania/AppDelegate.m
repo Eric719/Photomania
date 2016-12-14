@@ -11,6 +11,7 @@
 #import "FlickrFetcher.h"
 #import "Photo+Flickr.h"
 #import "PhotoDatabaseAvailability.h"
+#import "Photographer+Create.h"
 
 @interface AppDelegate () <NSURLSessionDownloadDelegate>
 @property (copy, nonatomic) void (^flickrDownloadBackgroundURLSessionCompletionHandler)();
@@ -46,9 +47,12 @@
     self.flickrDownloadBackgroundURLSessionCompletionHandler = completionHandler;
 }
 
+#pragma mark - Database Context
 - (void)setPhotoDatabaseContext:(NSManagedObjectContext *)photoDatabaseContext
 {
     _photoDatabaseContext = photoDatabaseContext;
+    
+    if (photoDatabaseContext) [Photographer userInManagedObjectContext:photoDatabaseContext];
     
     [NSTimer scheduledTimerWithTimeInterval:20*60
                                      target:self
@@ -151,5 +155,4 @@ didFinishDownloadingToURL:(nonnull NSURL *)location
         }];
     }
 }
-
 @end
